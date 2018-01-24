@@ -26,6 +26,12 @@ import os
 from PyQt4 import QtGui, uic
 from PyQt4.QtCore import pyqtSignal
 
+#
+from math import *
+from PyQt4.QtXml import QDomDocument
+from qgis.core import *
+from qgis.gui import *
+
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'PointsTriangulation_dockwidget_base.ui'))
 
@@ -42,8 +48,8 @@ class PointsTriangulationDockWidget(QtGui.QDockWidget, FORM_CLASS):
         # self.<objectname>, and you can use autoconnect slots - see
         # http://qt-project.org/doc/qt-4.8/designer-using-a-ui-file.html
         # #widgets-and-dialogs-with-auto-connect
-        self.setupUi(self)
-
+	   self.setupUi(self)	
+		
     def closeEvent(self, event):
         self.closingPlugin.emit()
         event.accept()
